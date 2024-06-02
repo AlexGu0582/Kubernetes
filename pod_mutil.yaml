@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pod-mutil
+spec: 
+  volumes: 
+  - name: webpage
+    emptyDir: {}
+  
+  containers:
+  #Create info and write to /apps/index.html
+  - name: random-app
+    image: busybox
+    command: ['/bin/sh', '-c', 'echo "web-$(data +%F)" >> /apps/index.html && sleep 30']
+    volumeMounts:
+      - name: webpage
+        mountPath: /apps
+
+  - name: nginx-app
+    image: nginx
+    VolumeMounts:
+    - name: webpage
+      mountPath: /usr/share/nginx/html
