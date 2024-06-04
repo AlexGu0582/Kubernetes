@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp-deploy
+  labels: 
+    app: demoapp-deploy
+spec: 
+  #The number of POD replicas
+  replicas: 3
+  selector: 
+    matchLables:
+      app: demoapp
+  template:
+    metadata:
+      labels: 
+      #the label of  Pod
+        app: demoapp
+    spec: 
+      containers:
+      - name: demoapp-container
+        image: oldxu3957/demoapp:v1.1
