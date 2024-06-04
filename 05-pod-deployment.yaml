@@ -1,0 +1,22 @@
+#deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dp
+  namespace: default
+spec:
+  #The Pod replicas that deploy needs to manage are 3
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx 
+
+template:
+  metadata:
+    #the labels for the Pod which was created
+    labels:
+      app: nginx 
+  spec: 
+    containers:
+    - name: nginx-container
+      image: nginx:1.16
