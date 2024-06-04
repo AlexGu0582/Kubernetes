@@ -11,12 +11,12 @@ spec:
     matchLabels:
       app: nginx 
 
-template:
-  metadata:
-    #the labels for the Pod which was created
-    labels:
-      app: nginx 
-  spec: 
-    containers:
-    - name: nginx-container
-      image: nginx:1.16
+  template:
+    metadata:
+      #the labels for the Pod which was created
+      labels:
+       app: nginx 
+    spec: 
+      containers:
+      - name: nginx-container
+        image: nginx:1.16
