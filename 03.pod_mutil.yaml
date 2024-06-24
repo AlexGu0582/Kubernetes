@@ -11,14 +11,14 @@ spec:
   #Create info and write to /apps/index.html
   - name: random-app
     image: busybox
-    command: ['/bin/sh', '-c', 'echo "web-$(data +%F)" >> /apps/index.html && sleep 30']
+    command: ['/bin/sh', '-c', 'echo "web-$(date +%F)" >> /apps/index.html && sleep 30']
     volumeMounts:
       - name: webpage
         mountPath: /apps
 
   - name: nginx-app
     image: nginx
-    VolumeMounts:
+    volumeMounts:
     - name: webpage
       mountPath: /usr/share/nginx/html
 #test for git
